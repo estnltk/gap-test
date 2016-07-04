@@ -53,7 +53,7 @@ $ 0.4,0.6,0.9,1.0,1.0,1.0,1.0,1.0,1.0,1.0
 ```
 
 ## Data files
-The benchmark dataset consists gap test files with an extension *.gap* and variant files with an extension *.var*.
+The benchmark dataset consists of the gap test files with an extension *.gap*, and the variant files with an extension *.var*.
 The dataset can be downloaded from http://ats.cs.ut.ee/keeletehnoloogia/estnltk/gap-test-benchmark.tar.gz
 
 ## References
