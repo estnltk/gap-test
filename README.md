@@ -1,4 +1,6 @@
 # Gap Test Benchmark
+
+
 In a gap filling test, the goal is to fill a fixed missing word in a sentence with a right word from a list of suggested candidates.
 Given a sentence with a gap and a list of candidates, the system should score each candidate and report the rank of the original word.
 To make the task more challenging, we created multiple versions of the test, taking into account word frequencies and a way the candidates are generated.
@@ -9,18 +11,18 @@ The benchmark dataset originates from the Estonian Reference Corpus [1], which c
 The corpus pre-processing, including sentence and word tokenization, has been performed using the estnltk toolkit [2].
 
 ## Sentence file
-Using the pre-processed corpus we created ten sentence files of 7K random sentences.
+From the pre-processed corpus we sampled 7K random sentences of 4-16 words.
 In each sentence we then marked one random word as a gap.
 
-Based on the frequency of a gap-word, we generated four test sets for each sentence file, so that each test set contains only gap-words falling into a certain frequency range.
+Based on the frequency of a gap-word, we generated four versions of test sets, so that each test set contains only gap-words falling into a certain frequency range.
 We define the following frequency groups:
+
 1. all words of any frequency
-2. frequent words (frequency 0.0001-0.001)
-3. words with an infrequent (frequency 0.00001-0.0001) inflectional form and a frequent base form
+2. frequent words (frequency 0.00001-0.0001)
+3. words with an infrequent (frequency less than 0.00001) inflectional form and a frequent base form
 4. words with an infrequent inflectional form and an infrequent base form.
 
-Altogether, the test suite contains 40 (10 samples X 4 frequency groups) test files.
-Each file contains one sentence per line.
+A test file contains one sentence per line.
 The words in a sentence are lowercased and space delimited.
 Each line starts with a number which denotes a zero-based word-offset of a gap word in the sentence (the gap word itself is not removed from the sentence).
 
@@ -47,15 +49,12 @@ The following example demonstrates how to run test and evaluation scripts:
 
 ```bash
 $ python example_test.py “gap test file” “candidate file” > python eval.py
-$ 0.4,0.6,0.9,1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+$ 0.4,0.6,0.9,1.0,1.0,1.0,1.0,1.0,1.0,1.0
 ```
 
-## Files
-* example_test.py – runs the gap test
-* eval.py – evaluation script
-* data/
-   * *.gap – gap test sentence files
-   * *.var – gap test candidate file
+## Data files
+The benchmark dataset consists gap test files with an extension *.gap* and variant files with an extension *.var*.
+The dataset can be downloaded from http://ats.cs.ut.ee/keeletehnoloogia/estnltk/gap-test-benchmark.tar.gz
 
 ## References
 1. Estonian Reference Corpus http://www.cl.ut.ee/korpused/segakorpus/
